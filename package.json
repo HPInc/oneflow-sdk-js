@@ -1,8 +1,8 @@
 {
   "name": "oneflow-sdk-js",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Javascript SDK for OneFlow",
-  "main": "oneflow.js",
+  "main": "./lib/oneflow",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
