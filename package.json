@@ -10,7 +10,6 @@
   "license": "OneFlow Master",
   "dependencies": {
     "superagent": "^0.18.2",
-    "crypto": "0.0.3",
     "request": "^2.37.0"
   }
 }
