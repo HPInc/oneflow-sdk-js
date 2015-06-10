@@ -1,6 +1,6 @@
 var oneflowAPI = require("./lib/chain.js");
 
-var endpoint = "http://localhost:3000/api";
+var endpoint = process.env.ONEFLOW_ENDPOINT;
 var token = process.env.ONEFLOW_TOKEN;
 var secret = process.env.ONEFLOW_SECRET;
 var path = "business-cards.pdf";
