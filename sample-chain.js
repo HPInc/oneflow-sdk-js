@@ -3,7 +3,7 @@ var oneflowAPI = require("./lib/chain.js");
 var endpoint = process.env.ONEFLOW_ENDPOINT;
 var token = process.env.ONEFLOW_TOKEN;
 var secret = process.env.ONEFLOW_SECRET;
-var path = "business-cards.pdf";
+var path = "https://s3-eu-west-1.amazonaws.com/oneflow-public/business_cards.pdf";
 var fetch = true;
 var orderId = Math.ceil(Math.random()*1000000);
 
