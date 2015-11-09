@@ -1,6 +1,6 @@
 {
   "name": "oneflow-sdk-js",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Javascript SDK for OneFlow",
   "main": "./lib/oneflow",
   "scripts": {
