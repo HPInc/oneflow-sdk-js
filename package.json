@@ -4,7 +4,7 @@
   "description": "Javascript SDK for OneFlow",
   "main": "./lib/oneflow",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --require test/support/env --bail --check-leaks test/"
   },
   "author": "Nigel Watson",
   "license": "OneFlow Master",
@@ -13,5 +13,11 @@
     "request": "^2.37.0",
     "superagent": "^0.18.2",
     "superagent-proxy": "^0.3.2"
+  },
+  "devDependencies": {
+    "codecov.io": "^0.1.6",
+    "mocha": "^2.3.3",
+    "mocha-junit-reporter": "^1.9.0",
+    "should": "^7.1.1"
   }
 }
