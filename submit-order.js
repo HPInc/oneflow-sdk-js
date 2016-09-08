@@ -2,7 +2,7 @@ var oneflowClient = require("./lib/oneflow");
 
 //oneflow local
 // var endpoint = "http://localhost:3000/api";
-var endpoint = "http://dev.oneflowcloud.com/api";
+var endpoint = "https://pro-api.oneflowcloud.com/api";
 var token = "";
 var secret = "";
 
