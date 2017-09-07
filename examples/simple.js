@@ -1,4 +1,4 @@
-const oneflowClient = require("./lib/oneflow");
+const oneflowClient = require("../lib/oneflow");
 
 async function main() {
 
@@ -6,6 +6,7 @@ async function main() {
 	const token = process.env.OFS_TOKEN;
 	const secret = process.env.OFS_SECRET;
 	const oneflow = new oneflowClient(endpoint, token, secret);
+
 	const sourceOrderId = `${Math.ceil(Math.random() * 1000000)}`;
 	const sourceItemId = sourceOrderId + "-1";
 	const sku = "PEARSON85x11";
@@ -34,30 +35,24 @@ async function main() {
 		}
 	});
 
-	const results = await oneflow.submitOrder();
+	try {
+		const savedOrder = await oneflow.submitOrder();
+		console.log("Success");
+		console.log("=======");
+		console.log("Order ID        :", savedOrder._id);
 
-	console.log(results);
+	} catch (err) {
+		console.log("Error");
+		console.log("=====");
+		console.log(err.message);
+		if (err.code == 208) {
+			err.validations.forEach(validation => {
+				console.log(validation.path, " -> ", validation.message);
+			});
+		}
 
-	// if (response.error) {
-	// 	console.log("Error");
-	// 	console.log("=====");
-	// 	console.log(response.error.message);
-	// 	if (response.error.code == 208) {
-	// 		response.error.validations.forEach(function (validation) {
-	// 			console.log(validation.path, " -> ", validation.message);
-	// 		});
-	// 	}
-	// } else {
-
-	// 	const savedOrder = response.order;
-	// 	console.log("Success");
-	// 	console.log("=======");
-	// 	console.log("Order ID        :", savedOrder._id);
-
-	// }
+	}
 
 }
 
-main().catch(err => {
-	console.log(err.stack);
-});
+main();
