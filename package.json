@@ -1,6 +1,6 @@
 {
   "name": "oneflow-sdk-js",
-  "version": "1.0.12",
+  "version": "2.0.0",
   "description": "Javascript SDK for OneFlow",
   "main": "./lib/oneflow",
   "scripts": {
@@ -9,10 +9,7 @@
   "author": "Nigel Watson",
   "license": "OneFlow Master",
   "dependencies": {
-    "api-chain": "0.0.6",
-    "request": "^2.37.0",
-    "superagent": "^0.18.2",
-    "superagent-proxy": "^0.3.2"
+    "axios": "0.16.2"
   },
   "devDependencies": {
     "codecov.io": "^0.1.6",
