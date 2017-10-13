@@ -3,6 +3,8 @@ dependencies:
     - npm install -g istanbul
 
 machine:
+  node:
+    version: 8
   environment:
     CODECOV_TOKEN: da4ce847-d6c8-4ea1-a7c9-a88585330d5f
     MOCHA_DIR: $CIRCLE_TEST_REPORTS/junit
