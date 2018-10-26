@@ -9,7 +9,8 @@
   "author": "Nigel Watson",
   "license": "OneFlow Master",
   "dependencies": {
-    "axios": "0.16.2"
+    "axios": "0.18.0",
+    "axios-retry": "3.1.1"
   },
   "devDependencies": {
     "codecov.io": "^0.1.6",
