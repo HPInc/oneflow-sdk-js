@@ -1,17 +1,16 @@
-const oneflowClient = require("../lib/oneflow");
+const OneflowClient = require("../lib/oneflow");
 
 async function main() {
 
 	const endpoint = process.env.OFS_ENDPOINT;
 	const token = process.env.OFS_TOKEN;
 	const secret = process.env.OFS_SECRET;
-	const oneflow = new oneflowClient(endpoint, token, secret);
+	const oneflow = new OneflowClient(endpoint, token, secret);
 
 	const sourceOrderId = `${Math.ceil(Math.random() * 1000000)}`;
 	const sourceItemId = sourceOrderId + "-1";
 	const sku = "PEARSON85x11";
 	const quantity = 2;
-	const code = 'ITEM';
 	const path = 'https://s3-eu-west-1.amazonaws.com/oneflow-public/business_cards.pdf';
 	const fetch = true;
 
@@ -21,7 +20,9 @@ async function main() {
 	item.addComponent({ code: 'cover', path, fetch });
 	item.addComponent({ code: 'inner', path, fetch });
 
-	order.orderData.addShipment({
+	order.addStockItem({ code: '123', quantity: 10 });
+
+	order.addShipment({
 		shipTo: {
 			name: "Nigel Watson",
 			address1: "999 Letsbe Avenue",
