@@ -1,10 +1,11 @@
 {
   "name": "oneflow-sdk-js",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "Javascript SDK for OneFlow",
   "main": "./lib/oneflow",
   "scripts": {
-    "test": "mocha --require test/support/env --bail --check-leaks test/"
+    "test": "mocha",
+    "cover": "nyc --reporter=lcov mocha"
   },
   "author": "Nigel Watson",
   "license": "OneFlow Master",
@@ -13,9 +14,10 @@
     "axios-retry": "3.1.1"
   },
   "devDependencies": {
-    "codecov.io": "^0.1.6",
-    "mocha": "^2.3.3",
-    "mocha-junit-reporter": "^1.9.0",
-    "should": "^7.1.1"
+    "lodash": "^4.17.11",
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0",
+    "should": "^13.2.3",
+    "sinon": "^7.1.1"
   }
 }

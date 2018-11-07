@@ -2,3 +2,6 @@ node_modules/*
 npm-debug.log
 run.sh
 coverage
+.idea
+.vscode
+.nyc_output
