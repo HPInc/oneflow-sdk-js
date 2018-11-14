@@ -147,11 +147,24 @@ describe('Oneflow', function () {
 	});
 
 	describe('submitOrder', () => {
-		it('should call the create order endpoint ', async () => {
+		it('should call the create order endpoint and handle a connect response', async () => {
 			stubs.request = sinon.stub(sdk, 'request').resolves({ order });
 
 			const result = await sdk.submitOrder();
 			result.should.have.properties(['destination', 'orderData']);
+
+			stubs.request.calledOnce.should.be.ok();
+			const requestArgs = stubs.request.lastCall.args;
+			requestArgs[0].should.be.equal('POST');
+			requestArgs[1].should.be.equal('/order');
+			requestArgs[2].should.have.properties(['destination', 'orderData']);
+		});
+
+		it('should call the create order endpoint and handle a order service response', async () => {
+			stubs.request = sinon.stub(sdk, 'request').resolves({ _id: 'abc', timestamp: '123' });
+
+			const result = await sdk.submitOrder();
+			result.should.have.properties(['_id', 'timestamp']);
 
 			stubs.request.calledOnce.should.be.ok();
 			const requestArgs = stubs.request.lastCall.args;
