@@ -213,6 +213,18 @@ describe('Oneflow', function () {
 			requestArgs[1].should.be.equal('/order');
 			requestArgs[2].should.have.properties(['destination', 'orderData']);
 		});
+
+		it('should be able to submit an order to with a routing rule endpoint', async () => {
+			stubs.request = sinon.stub(sdk, 'request').resolves({ order });
+
+			const result = await sdk.submitOrder({routingRule: '12ab34cd56ef'});
+			result.should.have.properties(['destination', 'orderData']);
+			stubs.request.calledOnce.should.be.ok();
+			const requestArgs = stubs.request.lastCall.args;
+			requestArgs[0].should.be.equal('POST');
+			requestArgs[1].should.be.equal('/order/route/12ab34cd56ef');
+			requestArgs[2].should.have.properties(['destination', 'orderData']);
+		});
 	});
 
 });
