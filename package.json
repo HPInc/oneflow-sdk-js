@@ -10,14 +10,14 @@
   "author": "Nigel Watson",
   "license": "OneFlow Master",
   "dependencies": {
-    "axios": "0.18.0",
-    "axios-retry": "3.1.1"
+    "axios": "0.19.0",
+    "axios-retry": "3.1.2"
   },
   "devDependencies": {
     "lodash": "^4.17.11",
-    "mocha": "^5.2.0",
-    "nyc": "^14.1.1",
+    "mocha": "6.1.4",
+    "nyc": "14.1.1",
     "should": "^13.2.3",
-    "sinon": "^7.3.1"
+    "sinon": "7.3.2"
   }
 }
