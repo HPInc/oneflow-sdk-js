@@ -37,7 +37,9 @@ async function main() {
 	});
 
 	try {
-		const savedOrder = await oneflow.submitOrder();
+		const savedOrder = await oneflow.submitOrder({
+			'axios-retry': { retries: 3 }
+		});
 		console.log("Success");
 		console.log("=======");
 		console.log("Order ID        :", savedOrder._id);
