@@ -95,7 +95,7 @@ describe('Oneflow', function () {
 	describe('request', () => {
 
 		it('should perform an http request with the Oneflow auth headers', async () => {
-		    stubs.axiosRequest = sinon.stub(axios, 'request').callsFake(a => Promise.resolve({ data: a }));
+		    stubs.axiosRequest = sinon.stub(sdk.client, 'request').callsFake(a => Promise.resolve({ data: a }));
 
 		    const result = await sdk.request('post', '/order', { mock: true });
 
@@ -112,7 +112,7 @@ describe('Oneflow', function () {
 		});
 
 		it('should support service user requests', async () => {
-		    stubs.axiosRequest = sinon.stub(axios, 'request').callsFake(a => Promise.resolve({ data: a }));
+		    stubs.axiosRequest = sinon.stub(sdk.client, 'request').callsFake(a => Promise.resolve({ data: a }));
 
 		    const options = { serviceUser: true, accountId: 'QWERTY' };
 		    const result = await sdk.request('post', '/order', { mock: true }, options);
