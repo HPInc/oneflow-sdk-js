@@ -41,7 +41,7 @@ jobs:
       - run:
           name: publish
           command: |
-              npm publish
+              npx semantic-release
 
   bump_version:
     docker:
