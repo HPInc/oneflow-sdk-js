@@ -1,6 +1,6 @@
 {
   "name": "oneflow-sdk-js",
-  "version": "2.0.14",
+  "version": "2.0.15",
   "description": "Javascript SDK for OneFlow",
   "main": "./lib/oneflow",
   "scripts": {
@@ -14,6 +14,8 @@
     "axios-retry": "3.1.2"
   },
   "devDependencies": {
+    "@semantic-release/git": "^9.0.0",
+    "semantic-release": "^17.3.0",
     "lodash": "^4.17.15",
     "mocha": "7.0.1",
     "nyc": "15.0.0",
