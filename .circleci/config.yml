@@ -42,8 +42,5 @@ jobs:
           name: upload coverage report
           command: bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
       - run:
-          name: package build
-          command: npm run build
-      - run:
           name: do a release
           command: npx semantic-release
