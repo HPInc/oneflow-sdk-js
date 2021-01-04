@@ -10,7 +10,7 @@
   "author": "Nigel Watson",
   "license": "OneFlow Master",
   "dependencies": {
-    "axios": "0.19.2",
+    "axios": "0.21.1",
     "axios-retry": "3.1.2"
   },
   "devDependencies": {
