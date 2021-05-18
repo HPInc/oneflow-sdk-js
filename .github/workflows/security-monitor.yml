@@ -1,0 +1,21 @@
+name: Security Monitor GitHub Action
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - review_requested
+    branches:
+      - "*"
+
+jobs:
+  security_monitor:
+    runs-on: ubuntu-latest
+    name: Security Monitor
+    steps:
+    - name: Security Monitor
+      uses: oneflow/security-monitor-action@master
+      with:
+        gh-pat: ${{ secrets.security_monitor }} # github personal access token
