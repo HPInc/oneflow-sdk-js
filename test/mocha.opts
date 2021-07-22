@@ -1,9 +1,0 @@
---reporter spec
---ui bdd
---recursive
---timeout 5000
---bail
---exit
---require test/support/env
---check-leaks
-test/
