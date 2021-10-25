@@ -1,7 +1,6 @@
 require('should');
 const _ = require('lodash');
 const sinon = require('sinon');
-const axios = require('axios');
 const OneflowSDK = require('../lib/oneflow');
 
 describe('Oneflow', function () {
@@ -226,6 +225,5 @@ describe('Oneflow', function () {
 			requestArgs[2].should.have.properties(['destination', 'orderData']);
 		});
 	});
-
 });
 
