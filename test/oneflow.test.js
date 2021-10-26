@@ -1,7 +1,6 @@
 require('should');
 const _ = require('lodash');
 const sinon = require('sinon');
-const axios = require('axios');
 const OneflowSDK = require('../lib/oneflow');
 
 describe('Oneflow', function () {
@@ -16,6 +15,12 @@ describe('Oneflow', function () {
 
 	it('should successfully create an instance of the SDK', function () {
 		sdk = OneflowSDK('http://fakedomain.local/api', 'token', 'secret');
+		sdk.should.have.property('createOrder');
+	});
+
+	it('should successfully create an instance of the SDK with retry options', function () {
+		const options = { retries:1, retryDelay: () => 3, retryCondition: () => true };
+		sdk = OneflowSDK('http://fakedomain.local/api', 'token', 'secret', options);
 		sdk.should.have.property('createOrder');
 	});
 
@@ -226,6 +231,5 @@ describe('Oneflow', function () {
 			requestArgs[2].should.have.properties(['destination', 'orderData']);
 		});
 	});
-
 });
 
