@@ -18,6 +18,12 @@ describe('Oneflow', function () {
 		sdk.should.have.property('createOrder');
 	});
 
+	it('should successfully create an instance of the SDK with axios-retry option', function () {
+		const axiosRetry = { retries: 1, retryDelay: () => 3, retryCondition: () => true };
+		sdk = OneflowSDK('http://fakedomain.local/api', 'token', 'secret', { 'axios-retry': axiosRetry });
+		sdk.should.have.property('createOrder');
+	});
+
 	describe('Order Builder', () => {
 
 		it('should successfully create an order structure', function () {
