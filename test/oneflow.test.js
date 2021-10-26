@@ -18,9 +18,9 @@ describe('Oneflow', function () {
 		sdk.should.have.property('createOrder');
 	});
 
-	it('should successfully create an instance of the SDK with axios-retry option', function () {
-		const axiosRetry = { retries: 1, retryDelay: () => 3, retryCondition: () => true };
-		sdk = OneflowSDK('http://fakedomain.local/api', 'token', 'secret', { 'axios-retry': axiosRetry });
+	it('should successfully create an instance of the SDK with retry options', function () {
+		const options = { retries:1, retryDelay: () => 3, retryCondition: () => true };
+		sdk = OneflowSDK('http://fakedomain.local/api', 'token', 'secret', options);
 		sdk.should.have.property('createOrder');
 	});
 
