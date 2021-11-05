@@ -131,7 +131,8 @@ describe('Oneflow', function () {
 		    const result = await sdk.request('get', '/order', undefined);
 
 		    result.method.should.be.equal('get');
-		    result.data.should.be.eql({});
+			console.log(result.data);
+		    (result.data === undefined).should.equal(true);
 		});
 		
 		it('should perform an http request with data=""', async () => {
@@ -140,7 +141,7 @@ describe('Oneflow', function () {
 		    const result = await sdk.request('get', '/order', '');
 
 		    result.method.should.be.equal('get');
-		    result.data.should.be.eql({});
+		    result.data.should.be.equal('');
 		});
 
 		it('should support service user requests', async () => {
