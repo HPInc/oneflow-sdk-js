@@ -131,7 +131,6 @@ describe('Oneflow', function () {
 		    const result = await sdk.request('get', '/order', undefined);
 
 		    result.method.should.be.equal('get');
-			console.log(result.data);
 		    (result.data === undefined).should.equal(true);
 		});
 		
