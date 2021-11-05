@@ -115,6 +115,33 @@ describe('Oneflow', function () {
 			    'content-type',
 		    ]);
 		});
+		
+		it('should perform an http request with data=null', async () => {
+		    stubs.axiosRequest = sinon.stub(sdk.client, 'request').callsFake(a => Promise.resolve({ data: a }));
+
+		    const result = await sdk.request('get', '/order', null);
+
+		    result.method.should.be.equal('get');
+		    result.data.should.be.eql({});
+		});
+		
+		it('should perform an http request with data=undefined', async () => {
+		    stubs.axiosRequest = sinon.stub(sdk.client, 'request').callsFake(a => Promise.resolve({ data: a }));
+
+		    const result = await sdk.request('get', '/order', undefined);
+
+		    result.method.should.be.equal('get');
+		    (result.data === undefined).should.equal(true);
+		});
+		
+		it('should perform an http request with data=""', async () => {
+		    stubs.axiosRequest = sinon.stub(sdk.client, 'request').callsFake(a => Promise.resolve({ data: a }));
+
+		    const result = await sdk.request('get', '/order', '');
+
+		    result.method.should.be.equal('get');
+		    result.data.should.be.equal('');
+		});
 
 		it('should support service user requests', async () => {
 		    stubs.axiosRequest = sinon.stub(sdk.client, 'request').callsFake(a => Promise.resolve({ data: a }));
