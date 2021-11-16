@@ -2,7 +2,7 @@ require('should');
 const _ = require('lodash');
 const sinon = require('sinon');
 const axiosRetry = require('axios-retry');
-const { isRetryableError, exponentialDelay } = require('../lib/customRetry');
+const { isRetryableError, exponentialDelay, isTooManyRequestsError } = require('../lib/customRetry');
 
 describe('CustomRetry', function () {
     let stubs = {};
@@ -61,6 +61,38 @@ describe('CustomRetry', function () {
             const firstDelay = exponentialDelay(1, error);
             const seconDelay = exponentialDelay(2, error);
             firstDelay.should.be.below(seconDelay);
+        });
+    });
+    
+    describe('isTooManyRequestsError', () => {
+        it('should return false if error is not defined', done => {
+            const result = isTooManyRequestsError();
+            result.should.equal(false);
+            done();
+        });
+        
+        it('should return false if response is not defined', done => {
+            const result = isTooManyRequestsError({});
+            result.should.equal(false);
+            done();
+        });
+        
+        it('should return false if status is not defined', done => {
+            const result = isTooManyRequestsError({ response: {} });
+            result.should.equal(false);
+            done();
+        });
+        
+        it('should return false if status is not equal 429', done => {
+            const result = isTooManyRequestsError({ response: { sattus: 400 } });
+            result.should.equal(false);
+            done();
+        });
+        
+        it('should return true if status is equal 429', done => {
+            const result = isTooManyRequestsError({ response: { sattus: 429 } });
+            result.should.equal(false);
+            done();
         });
     });
 });
