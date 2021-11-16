@@ -84,14 +84,14 @@ describe('CustomRetry', function () {
         });
         
         it('should return false if status is not equal 429', done => {
-            const result = isTooManyRequestsError({ response: { sattus: 400 } });
+            const result = isTooManyRequestsError({ response: { status: 400 } });
             result.should.equal(false);
             done();
         });
         
         it('should return true if status is equal 429', done => {
-            const result = isTooManyRequestsError({ response: { sattus: 429 } });
-            result.should.equal(false);
+            const result = isTooManyRequestsError({ response: { status: 429 } });
+            result.should.equal(true);
             done();
         });
     });
