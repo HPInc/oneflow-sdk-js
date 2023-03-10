@@ -37,4 +37,4 @@ The routing rule key is a unique string of numbers and letters
 
 For more detailed examples checkout the [examples](examples) folder.
 
-You can find more information about the required fields and the order structure in [http://docs.oneflowcloud.com](http://docs.oneflowcloud.com)
+You can find more information about the required fields and the order structure in [https://hpsiteflow.com](http://hpsiteflow.com)
