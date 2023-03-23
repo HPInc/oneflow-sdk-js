@@ -111,6 +111,7 @@ describe('Oneflow', function () {
 		    result.data.should.have.property('mock').equal(true);
 		    result.headers.should.have.properties([
 			    'x-oneflow-authorization',
+				'x-oneflow-algorithm',
 			    'x-oneflow-date',
 			    'content-type',
 		    ]);
@@ -156,6 +157,7 @@ describe('Oneflow', function () {
 		    result.data.should.have.property('mock').equal(true);
 		    result.headers.should.have.properties([
 			    'x-oneflow-authorization',
+				'x-oneflow-algorithm',
 			    'x-oneflow-date',
 			    'x-oneflow-account',
 			    'content-type',
