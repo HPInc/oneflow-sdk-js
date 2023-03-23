@@ -19,7 +19,7 @@ describe('Oneflow', function () {
 	});
 
 	it('should successfully create an instance of the SDK with retry options', function () {
-		const options = { retries:1, retryDelay: () => 3, retryCondition: () => true };
+		const options = { retries: 1, retryDelay: () => 3, retryCondition: () => true };
 		sdk = OneflowSDK('http://fakedomain.local/api', 'token', 'secret', options);
 		sdk.should.have.property('createOrder');
 	});
@@ -100,68 +100,68 @@ describe('Oneflow', function () {
 	describe('request', () => {
 
 		it('should perform an http request with the Oneflow auth headers', async () => {
-		    stubs.axiosRequest = sinon.stub(sdk.client, 'request').callsFake(a => Promise.resolve({ data: a }));
+			stubs.axiosRequest = sinon.stub(sdk.client, 'request').callsFake(a => Promise.resolve({ data: a }));
 
-		    const result = await sdk.request('post', '/order', { mock: true });
+			const result = await sdk.request('post', '/order', { mock: true });
 
-		    result.should.have.properties(['method', 'url', 'data', 'headers']);
+			result.should.have.properties(['method', 'url', 'data', 'headers']);
 
-		    result.method.should.be.equal('post');
-		    result.url.should.be.equal('http://fakedomain.local/api/order');
-		    result.data.should.have.property('mock').equal(true);
-		    result.headers.should.have.properties([
-			    'x-oneflow-authorization',
+			result.method.should.be.equal('post');
+			result.url.should.be.equal('http://fakedomain.local/api/order');
+			result.data.should.have.property('mock').equal(true);
+			result.headers.should.have.properties([
+				'x-oneflow-authorization',
 				'x-oneflow-algorithm',
-			    'x-oneflow-date',
-			    'content-type',
-		    ]);
+				'x-oneflow-date',
+				'content-type',
+			]);
 		});
-		
+
 		it('should perform an http request with data=null', async () => {
-		    stubs.axiosRequest = sinon.stub(sdk.client, 'request').callsFake(a => Promise.resolve({ data: a }));
+			stubs.axiosRequest = sinon.stub(sdk.client, 'request').callsFake(a => Promise.resolve({ data: a }));
 
-		    const result = await sdk.request('get', '/order', null);
+			const result = await sdk.request('get', '/order', null);
 
-		    result.method.should.be.equal('get');
-		    result.data.should.be.eql({});
+			result.method.should.be.equal('get');
+			result.data.should.be.eql({});
 		});
-		
+
 		it('should perform an http request with data=undefined', async () => {
-		    stubs.axiosRequest = sinon.stub(sdk.client, 'request').callsFake(a => Promise.resolve({ data: a }));
+			stubs.axiosRequest = sinon.stub(sdk.client, 'request').callsFake(a => Promise.resolve({ data: a }));
 
-		    const result = await sdk.request('get', '/order', undefined);
+			const result = await sdk.request('get', '/order', undefined);
 
-		    result.method.should.be.equal('get');
-		    (result.data === undefined).should.equal(true);
+			result.method.should.be.equal('get');
+			(result.data === undefined).should.equal(true);
 		});
-		
+
 		it('should perform an http request with data=""', async () => {
-		    stubs.axiosRequest = sinon.stub(sdk.client, 'request').callsFake(a => Promise.resolve({ data: a }));
+			stubs.axiosRequest = sinon.stub(sdk.client, 'request').callsFake(a => Promise.resolve({ data: a }));
 
-		    const result = await sdk.request('get', '/order', '');
+			const result = await sdk.request('get', '/order', '');
 
-		    result.method.should.be.equal('get');
-		    result.data.should.be.equal('');
+			result.method.should.be.equal('get');
+			result.data.should.be.equal('');
 		});
 
 		it('should support service user requests', async () => {
-		    stubs.axiosRequest = sinon.stub(sdk.client, 'request').callsFake(a => Promise.resolve({ data: a }));
+			stubs.axiosRequest = sinon.stub(sdk.client, 'request').callsFake(a => Promise.resolve({ data: a }));
 
-		    const options = { serviceUser: true, accountId: 'QWERTY' };
-		    const result = await sdk.request('post', '/order', { mock: true }, options);
+			const options = { serviceUser: true, accountId: 'QWERTY' };
+			const result = await sdk.request('post', '/order', { mock: true }, options);
 
-		    result.should.have.properties(['method', 'url', 'data', 'headers']);
+			result.should.have.properties(['method', 'url', 'data', 'headers']);
 
-		    result.method.should.be.equal('post');
-		    result.url.should.be.equal('http://fakedomain.local/api/order');
-		    result.data.should.have.property('mock').equal(true);
-		    result.headers.should.have.properties([
-			    'x-oneflow-authorization',
+			result.method.should.be.equal('post');
+			result.url.should.be.equal('http://fakedomain.local/api/order');
+			result.data.should.have.property('mock').equal(true);
+			result.headers.should.have.properties([
+				'x-oneflow-authorization',
 				'x-oneflow-algorithm',
-			    'x-oneflow-date',
-			    'x-oneflow-account',
-			    'content-type',
-		    ]);
+				'x-oneflow-date',
+				'x-oneflow-account',
+				'content-type',
+			]);
 		});
 
 	});
