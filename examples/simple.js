@@ -11,7 +11,7 @@ async function main() {
 	const sourceItemId = sourceOrderId + "-1";
 	const sku = "PEARSON85x11";
 	const quantity = 2;
-	const path = 'https://s3-eu-west-1.amazonaws.com/oneflow-public/business_cards.pdf';
+	const path = 'https://files-static.hpsiteflow.com/samples/business_cards.pdf';
 	const fetch = true;
 
 	const order = oneflow.createOrder("oneflow", { sourceOrderId });
