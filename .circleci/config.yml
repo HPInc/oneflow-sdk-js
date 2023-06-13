@@ -1,19 +1,10 @@
 version: 2.1
 
-orbs:
-  queue: eddiewebb/queue@volatile
-
 workflows:
   build_and_publish:
     jobs:
-      - queue/block_workflow:
-          context: oneflow
-          only-on-branch: master
-          time: "10" # minutes max wait
       - build:
           context: oneflow
-          requires:
-            - queue/block_workflow
 
 jobs:
   build:
