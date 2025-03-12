@@ -1,0 +1,11 @@
+reporter: spec
+ui: bdd
+enableSourceMaps: true,
+recursive: true
+exit: true
+timeout: 5000
+
+file:
+  - test/support/env.js
+
+spec: test/**/*.test.{js,ts}

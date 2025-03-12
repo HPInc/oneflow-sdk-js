@@ -5,30 +5,31 @@ const axiosRetry = require('axios-retry');
 const { isRetryableError, exponentialDelay, isTooManyRequestsError } = require('../lib/customRetry');
 
 describe('CustomRetry', function () {
-    let stubs = {};
+    const stubs = {
+        isNetworkOrIdempotentRequestError: sinon.stub(axiosRetry, 'isNetworkOrIdempotentRequestError')
+    };
 
     afterEach(() => {
-        _.each(stubs, stub => stub.restore());
-        stubs = {};
+        Object.values(stubs).forEach(stub => stub.restore());
     });
 
     describe('isRetryableError', () => {
         it('should retry network or idempotent request', async () => {
-            stubs.request = sinon.stub(axiosRetry, 'isNetworkOrIdempotentRequestError').returns(true);
+            stubs.isNetworkOrIdempotentRequestError.returns(true);
             const error = { message: 'request failed', response: { status: 500 } };
             const shouldRetry = isRetryableError(error);
             shouldRetry.should.be.equal(true);
         });
 
         it('should retry 429 error', async () => {
-            stubs.request = sinon.stub(axiosRetry, 'isNetworkOrIdempotentRequestError').returns(false);
+            stubs.isNetworkOrIdempotentRequestError.returns(false);
             const error = { message: 'request failed', response: { status: 429 } };
             const shouldRetry = isRetryableError(error);
             shouldRetry.should.be.equal(true);
         });
 
         it('should not retry non network nor idempotent errors different than 429', async () => {
-            stubs.request = sinon.stub(axiosRetry, 'isNetworkOrIdempotentRequestError').returns(false);
+            stubs.isNetworkOrIdempotentRequestError.returns(false);
             const error = { message: 'request failed', response: { status: 500 } };
             const shouldRetry = isRetryableError(error);
             shouldRetry.should.be.equal(false);

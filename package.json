@@ -14,11 +14,10 @@
     "axios-retry": "^4.5.0"
   },
   "devDependencies": {
-    "lodash": "^4.17.21",
-    "mocha": "^9.0.2",
+    "mocha": "^11.1.0",
     "nyc": "^15.1.0",
     "semantic-release": "^19.0.2",
     "should": "^13.2.3",
-    "sinon": "^11.1.1"
+    "sinon": "^19.0.2"
   }
 }
