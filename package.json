@@ -10,8 +10,8 @@
   "author": "HP Inc.",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.21.4",
-    "axios-retry": "^3.1.9"
+    "axios": "^1.8.3",
+    "axios-retry": "^4.5.0"
   },
   "devDependencies": {
     "lodash": "^4.17.21",
