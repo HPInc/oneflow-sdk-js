@@ -9,7 +9,7 @@ describe('Oneflow', function () {
 	let stubs = {};
 
 	afterEach(() => {
-        Object.values(stubs).forEach(stub => stub.restore());
+		Object.values(stubs).forEach(stub => stub.restore());
 		stubs = {};
 	});
 
