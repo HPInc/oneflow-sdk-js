@@ -9,7 +9,7 @@ workflows:
 jobs:
   build:
     docker:
-      - image: circleci/node:16-stretch
+      - image: cimg/node:20.11
     steps:
       - checkout
       - restore_cache:
